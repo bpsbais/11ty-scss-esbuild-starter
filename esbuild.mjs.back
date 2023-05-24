@@ -1,0 +1,49 @@
+import * as esbuild from 'esbuild'
+
+/*
+ * simple build with esbuild
+ * ------------------------- */
+/*let ctx = await esbuild.context({
+  entryPoints: ['app.jsx'],
+  bundle: true,
+  minify: true,
+  sourcemap: true,
+  target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
+  outfile: 'out.js',
+})
+
+await ctx.watch()
+let {host, port} = await ctx.serve()
+console.log(host, port)
+*/
+
+/*
+ * trasnform ts code to js
+ * ----------------------- */
+/*let ts = 'let x: number = 1'
+let result = await esbuild.transform(ts, {
+  loader: 'ts'
+})
+
+console.log(result)
+*/
+
+/*
+ * Live reload
+ * (when code is not in production)
+ * -------------------------------- */
+let ctx = await esbuild.context({
+  entryPoints: ['app.jsx'],
+  bundle: true,
+  minify: true,
+  sourcemap: true,
+  target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
+  outdir: 'www'
+})
+
+if (!window.IS_PRODUCTION) {
+  await ctx.watch()
+  let { host, port } = await ctx.serve({
+    servedir: 'www'
+  })
+}
