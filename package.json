@@ -1,5 +1,5 @@
 {
-  "name": "esbuild",
+  "name": "11ty-scss-esbuild-starter",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
